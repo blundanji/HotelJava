@@ -12,3 +12,1129 @@ public class Principal {
     }
     
 }
+
+Clase Cliente
+
+package hotelcali;
+
+
+package Datos;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+public class Cliente extends Persona {
+
+    private String codigoCliente;
+
+    public Cliente() {
+    }
+
+    public Cliente(String codigoCliente) {
+        this.codigoCliente = codigoCliente;
+    }
+
+    public String getCodigoCliente() {
+        return codigoCliente;
+    }
+
+    public void setCodigoCliente(String codigoCliente) {
+        this.codigoCliente = codigoCliente;
+    }
+
+    private Conexion mysql = new Conexion();
+    private Connection cn = mysql.conectar();
+    private String sSQL = "";
+    private String sSQL2 = "";
+    public Integer totalregistros;
+
+    public boolean insertar(Cliente dato) {
+        sSQL = "insert into persona (nombre,primer_apellido,segundo_apellido,tipo_documento,num_documento,direccion,telefono,correo)"
+                + "values (?,?,?,?,?,?,?,?)";
+
+        try {
+
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+
+            pst.setString(1, dato.getNombre());
+            pst.setString(2, dato.getPrimerApellido());
+            pst.setString(3, dato.getSegundoApellido());
+            pst.setString(4, dato.getTipoDocumento());
+            pst.setString(5, dato.getNumDocumento());
+            pst.setString(6, dato.getDireccion());
+            pst.setString(7, dato.getTelefono());
+            pst.setString(8, dato.getCorreo());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                return true;
+
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+    public boolean editar(Cliente dato) {
+        sSQL = "update persona set idpersona=?, nombre=?, primer_apellido=?, segundo_apellido=?, tipo_documento=?,num_documento=?,"
+                + " direccion=?, telefono=?,correo=?";
+
+        try {
+
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+
+            pst.setInt(9, dato.getIdpersona());
+            pst.setString(1, dato.getNombre());
+            pst.setString(2, dato.getPrimerApellido());
+            pst.setString(3, dato.getSegundoApellido());
+            pst.setString(4, dato.getTipoDocumento());
+            pst.setString(5, dato.getNumDocumento());
+            pst.setString(6, dato.getDireccion());
+            pst.setString(7, dato.getTelefono());
+            pst.setString(8, dato.getCorreo());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+
+                return true;
+
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+    public boolean eliminar(Cliente dato) {
+
+        sSQL2 = "delete from persona where idpersona=?";
+
+        try {
+            PreparedStatement pst2 = cn.prepareStatement(sSQL2);
+
+            pst2.setInt(1, dato.getIdpersona());
+
+            int n2 = pst2.executeUpdate();
+
+            if (n2 != 0) {
+                return true;
+
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+    public DefaultTableModel mostrarvista(String buscar) {
+        DefaultTableModel modelo;
+        String[] titulos = {"ID", "Nombre", "Apellido", "2Apellido", "tipo Documento", "num Documento", "Direccion", "Telefono", "Correo"};
+        String[] registro = new String[9];
+        modelo = new DefaultTableModel(null, titulos);
+        sSQL = "SELECT idpersona, nombre, primer_apellido, segundo_apellido, tipo_documento, num_documento, direccion, telefono, correo FROM persona WHERE num_documento LIKE '%" + buscar + "%' ORDER BY idpersona DESC";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+            while (rs.next()) {
+                registro[0] = rs.getString("idpersona");
+                registro[1] = rs.getString("nombre");
+                registro[2] = rs.getString("primer_apellido");
+                registro[3] = rs.getString("segundo_apellido");
+                registro[4] = rs.getString("tipo_documento");
+                registro[5] = rs.getString("num_documento");
+                registro[6] = rs.getString("direccion");
+                registro[7] = rs.getString("telefono");
+                registro[8] = rs.getString("correo");
+                modelo.addRow(registro);
+            }
+            return modelo;
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return null;
+        }
+    }
+
+}
+
+Clase conexion
+
+package Datos;
+
+
+import java.sql.*;
+import javax.swing.JOptionPane;
+
+public class Conexion {
+    
+    public String user = "root";
+    public String pass = "";
+
+    public Conexion() {
+    }
+
+    public Connection conectar() {
+        Connection link = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            link = DriverManager.getConnection("jdbc:mysql://localhost:3306/basereserva?autoReconnect=true&useSSL=false", this.user, this.pass);
+
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showConfirmDialog(null, e);
+
+        }
+
+        return link;
+    }
+
+}
+
+
+clase habitacion 
+
+package Datos;
+
+import hotelcali.frmPago;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+public class Habitacion {
+
+    public static ArrayList<Habitacion> habitaciones = new ArrayList<Habitacion>();
+
+    private int idHabitacion;
+    private String numero;
+    private String piso;
+    private double precio;
+    private String tipo;
+    private String estado;
+    private String descripcion;
+
+    private Conexion mysql = new Conexion();
+    private Connection cn = mysql.conectar();
+    private String sSQL = "";
+
+    public Habitacion() {
+    }
+
+    public Habitacion(int idHabitacion, String numero, String piso, double precio, String tipo, String estado, String descripcion) {
+        this.idHabitacion = idHabitacion;
+        this.numero = numero;
+        this.piso = piso;
+        this.precio = precio;
+        this.tipo = tipo;
+        this.estado = estado;
+        this.descripcion = descripcion;
+    }
+
+    public int getIdHabitacion() {
+        return idHabitacion;
+    }
+
+    public void setIdHabitacion(int idHabitacion) {
+        this.idHabitacion = idHabitacion;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getPiso() {
+        return piso;
+    }
+
+    public void setPiso(String piso) {
+        this.piso = piso;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Conexion getMysql() {
+        return mysql;
+    }
+
+    public void setMysql(Conexion mysql) {
+        this.mysql = mysql;
+    }
+
+    public Connection getCn() {
+        return cn;
+    }
+
+    public void setCn(Connection cn) {
+        this.cn = cn;
+    }
+
+    public String getsSQL() {
+        return sSQL;
+    }
+
+    public void setsSQL(String sSQL) {
+        this.sSQL = sSQL;
+    }
+
+    @Override
+    public String toString() {
+        return "Habitacion{" + "idHabitacion=" + idHabitacion + ", numero=" + numero + ", piso=" + piso + ", precio=" + precio + ", tipo=" + tipo + ", estado=" + estado + ", descripcion=" + descripcion + ", mysql=" + mysql + ", cn=" + cn + ", sSQL=" + sSQL + '}';
+    }
+
+    public DefaultTableModel mostrar(String buscar) {
+        DefaultTableModel modelo;
+
+        String[] titulos = {"ID", "Número", "Piso", "Tipo Habitación", "Precio", "Estado", "Descripción"};
+
+        String[] registroHabitacion = new String[7];
+
+        modelo = new DefaultTableModel(null, titulos);
+
+        sSQL = "select * from habitacion where piso like '%" + buscar + "%' order by idhabitacion";
+
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+
+            while (rs.next()) {
+                registroHabitacion[0] = rs.getString("idhabitacion");
+                registroHabitacion[1] = rs.getString("numero");
+                registroHabitacion[2] = rs.getString("piso");
+                registroHabitacion[3] = rs.getString("tipo_habitacion");
+                registroHabitacion[4] = rs.getString("precio");
+                registroHabitacion[5] = rs.getString("estado");
+                registroHabitacion[6] = rs.getString("Descripcion");
+
+                modelo.addRow(registroHabitacion);
+
+            }
+            return modelo;
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return null;
+        }
+    }
+
+
+    public DefaultTableModel mostrarvista(String buscar) {
+        DefaultTableModel modelo;
+
+        String[] titulos = {"ID", "Número", "Piso", "Tipo Habitación", "Precio", "Estado", "Descripción"};
+
+        String[] registro = new String[8];
+
+        modelo = new DefaultTableModel(null, titulos);
+
+        sSQL = "select * from habitacion where piso like '%" + buscar + "%' and estado='Disponible' order by idhabitacion";
+
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+
+            while (rs.next()) {
+                registro[0] = rs.getString("idhabitacion");
+                registro[1] = rs.getString("numero");
+                registro[2] = rs.getString("piso");
+                registro[3] = rs.getString("tipo_habitacion");
+                registro[4] = rs.getString("precio");
+                registro[5] = rs.getString("estado");
+                registro[6] = rs.getString("Descripcion");
+
+                modelo.addRow(registro);
+
+            }
+            return modelo;
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return null;
+        }
+    }
+
+    public boolean insertar(Habitacion dato) {
+        sSQL = "insert into habitacion (numero,piso,tipo_habitacion,precio,estado,descripcion)"
+                + "VALUES (?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+
+            pst.setString(1, dato.getNumero());
+            pst.setString(2, dato.getPiso());
+            pst.setString(3, dato.getTipo());
+            pst.setDouble(4, dato.getPrecio());
+            pst.setString(5, dato.getEstado());
+            pst.setString(6, dato.getDescripcion());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+    public boolean editar(Habitacion dato) {
+        sSQL = "update habitacion set numero=?,piso=?,tipo_habitacion=?,precio=?,estado=?,descripcion=?"
+                + " where idhabitacion=?";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+            pst.setString(1, dato.getNumero());
+            pst.setString(2, dato.getPiso());
+            pst.setString(3, dato.getTipo());
+            pst.setDouble(4, dato.getPrecio());
+            pst.setString(5, dato.getEstado());
+            pst.setString(6, dato.getDescripcion());
+            pst.setInt(7, dato.getIdHabitacion());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+    public boolean desocupar(Habitacion dato) {
+        sSQL = "update habitacion set estado='Disponible'"
+                + " where idhabitacion=?";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+
+            pst.setInt(1, dato.getIdHabitacion());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+    public boolean ocupar(Habitacion dato) {
+        sSQL = "update habitacion set estado='No Disponible'"
+                + " where idhabitacion=?";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+
+            pst.setInt(1, dato.getIdHabitacion());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+    public boolean eliminar(Habitacion dato) {
+        sSQL = "DELETE FROM habitacion WHERE idhabitacion=?";
+
+        try {
+
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+
+            pst.setInt(1, dato.getIdHabitacion());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                habitaciones.remove(dato);
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+}
+
+package Datos;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+public class Pago {
+
+    private int idPago;
+    private int idReserva;
+    private String comprobante;
+    private String numComprobantes;
+    private Double pagoTotal;
+
+    private Date fechaEmision;
+    private Date fechaPago;
+
+    private Conexion mysql = new Conexion();
+    private Connection cn = mysql.conectar();
+    private String sSQL = "";
+
+    public Pago() {
+    }
+
+    public Pago(int idPago, int idReserva, String comprobante, String numComprobantes, Double pagoTotal, Date fechaEmision, Date fechaPago) {
+        this.idPago = idPago;
+        this.idReserva = idReserva;
+        this.comprobante = comprobante;
+        this.numComprobantes = numComprobantes;
+
+        this.pagoTotal = pagoTotal;
+
+        this.fechaEmision = fechaEmision;
+        this.fechaPago = fechaPago;
+    }
+
+    public int getIdPago() {
+        return idPago;
+    }
+
+    public void setIdPago(int idPago) {
+        this.idPago = idPago;
+    }
+
+    public int getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(int idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    public String getComprobante() {
+        return comprobante;
+    }
+
+    public void setComprobante(String comprobante) {
+        this.comprobante = comprobante;
+    }
+
+    public String getNumComprobantes() {
+        return numComprobantes;
+    }
+
+    public void setNumComprobantes(String numComprobantes) {
+        this.numComprobantes = numComprobantes;
+    }
+
+    public Double getPagoTotal() {
+        return pagoTotal;
+    }
+
+    public void setPagoTotal(Double pagoTotal) {
+        this.pagoTotal = pagoTotal;
+    }
+
+    public Date getFechaEmision() {
+        return fechaEmision;
+    }
+
+    public void setFechaEmision(Date fechaEmision) {
+        this.fechaEmision = fechaEmision;
+    }
+
+    public Date getFechaPago() {
+        return fechaPago;
+    }
+
+    public void setFechaPago(Date fechaPago) {
+        this.fechaPago = fechaPago;
+    }
+
+    public DefaultTableModel mostrar(String buscar) {
+        DefaultTableModel modelo;
+
+        String[] titulos = {"ID", "Idreserva", "Comprobante", "Número", "Total", "Fecha Emisión", "Fecha Pago"};
+
+        String[] registro = new String[7];
+
+        modelo = new DefaultTableModel(null, titulos);
+
+        sSQL = "select * from pago where idreserva=" + buscar + " order by idpago ";
+
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+
+            while (rs.next()) {
+                registro[0] = rs.getString("idpago");
+                registro[1] = rs.getString("idreserva");
+                registro[2] = rs.getString("tipoComprobante");
+                registro[3] = rs.getString("numComprobante");
+                registro[4] = rs.getString("totalPago");
+                registro[5] = rs.getString("fechaEmision");
+                registro[6] = rs.getString("fechaPago");
+
+                modelo.addRow(registro);
+
+            }
+            return modelo;
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return null;
+        }
+
+    }
+    public DefaultTableModel mostrarPagos(String buscar) {
+        DefaultTableModel modelo;
+
+        String[] titulos = {"ID", "Idreserva", "Comprobante", "Número", "Total", "Fecha Emisión", "Fecha Pago"};
+
+        String[] registro = new String[7];
+
+        modelo = new DefaultTableModel(null, titulos);
+
+        sSQL  = "SELECT * FROM pago where idpago like'%" + buscar + "%'ORDER BY idpago asc";
+
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+
+            while (rs.next()) {
+                registro[0] = rs.getString("idpago");
+                registro[1] = rs.getString("idreserva");
+                registro[2] = rs.getString("tipoComprobante");
+                registro[3] = rs.getString("numComprobante");
+                registro[4] = rs.getString("totalPago");
+                registro[5] = rs.getString("fechaEmision");
+                registro[6] = rs.getString("fechaPago");
+
+                modelo.addRow(registro);
+
+            }
+            return modelo;
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return null;
+        }
+
+    }
+
+    public boolean insertar(Pago dato) {
+        sSQL = "insert into pago (idreserva,tipoComprobante,numComprobante,totalPago,fechaEmision,fechaPago)"
+                + "values (?,?,?,?,?,?)";
+        try {
+
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+
+            pst.setInt(1, dato.getIdReserva());
+            pst.setString(2, dato.getComprobante());
+            pst.setString(3, dato.getNumComprobantes());
+            pst.setDouble(4, dato.getPagoTotal());
+            pst.setDate(5, dato.getFechaEmision());
+            pst.setDate(6, dato.getFechaPago());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+    public boolean editar(Pago dato) {
+        sSQL = "update pago set idreserva=?,tipoComprobante=?,numComprobante=?,totalPago=?,fechaEmision=?,fechaPago=?"
+                + " where idpago=?";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+            pst.setInt(1, dato.getIdReserva());
+            pst.setString(2, dato.getComprobante());
+            pst.setString(3, dato.getNumComprobantes());
+            pst.setDouble(4, dato.getPagoTotal());
+            pst.setDate(5, dato.getFechaEmision());
+            pst.setDate(6, dato.getFechaPago());
+
+            pst.setInt(7, dato.getIdPago());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+    public boolean eliminar(Pago dato) {
+        sSQL = "delete from pago where idpago=?";
+
+        try {
+
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+
+            pst.setInt(1, dato.getIdPago());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+}
+
+clase pago
+
+package Datos;
+
+public class Persona {
+
+    private int idpersona;
+    private String nombre;
+    private String PrimerApellido;
+    private String SegundoApellido;
+    private String tipoDocumento;
+    private String numDocumento;
+    private String direccion;
+    private String telefono;
+    private String correo;
+
+    public Persona() {
+    }
+
+    public Persona(int idpersona, String nombre, String PrimerApellido, String SegundoApellido, String tipoDocumento, String numDocumento, String direccion, String telefono, String correo) {
+        this.idpersona = idpersona;
+        this.nombre = nombre;
+        this.PrimerApellido = PrimerApellido;
+        this.SegundoApellido = SegundoApellido;
+        this.tipoDocumento = tipoDocumento;
+        this.numDocumento = numDocumento;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
+    }
+
+    public int getIdpersona() {
+        return idpersona;
+    }
+
+    public void setIdpersona(int idpersona) {
+        this.idpersona = idpersona;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getPrimerApellido() {
+        return PrimerApellido;
+    }
+
+    public void setPrimerApellido(String PrimerApellido) {
+        this.PrimerApellido = PrimerApellido;
+    }
+
+    public String getSegundoApellido() {
+        return SegundoApellido;
+    }
+
+    public void setSegundoApellido(String SegundoApellido) {
+        this.SegundoApellido = SegundoApellido;
+    }
+
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public String getNumDocumento() {
+        return numDocumento;
+    }
+
+    public void setNumDocumento(String numDocumento) {
+        this.numDocumento = numDocumento;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + this.idpersona;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Persona other = (Persona) obj;
+        return this.idpersona == other.idpersona;
+    }
+    
+
+   
+
+  
+}
+
+
+clase reserva
+
+package Datos;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+public class Reserva {
+
+    private int idReserva;
+    private int idHabitacion;
+    private int idCliente;
+    private double pagoTotal;
+    
+    private Date fechaReserva;
+    private Date fechaIngresa;
+    private Date fechaSalida;
+
+    private Conexion mysql = new Conexion();
+    private Connection cn = mysql.conectar();
+    private String sSQL = "";
+
+    public Reserva() {
+    }
+
+    public Reserva(int idReserva, int idHabitacion, int idCliente, double pagoTotal, Date fechaReserva, Date fechaIngresa, Date fechaSalida) {
+        this.idReserva = idReserva;
+        this.idHabitacion = idHabitacion;
+        this.idCliente = idCliente;
+        this.pagoTotal = pagoTotal;
+
+        this.fechaReserva = fechaReserva;
+        this.fechaIngresa = fechaIngresa;
+        this.fechaSalida = fechaSalida;
+
+    }
+
+    public int getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(int idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    public int getIdHabitacion() {
+        return idHabitacion;
+    }
+
+    public void setIdHabitacion(int idHabitacion) {
+        this.idHabitacion = idHabitacion;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public double getPagoTotal() {
+        return pagoTotal;
+    }
+
+    public void setPagoTotal(double pagoTotal) {
+        this.pagoTotal = pagoTotal;
+    }
+
+    public Date getFechaReserva() {
+        return fechaReserva;
+    }
+
+    public void setFechaReserva(Date fechaReserva) {
+        this.fechaReserva = fechaReserva;
+    }
+
+    public Date getFechaIngresa() {
+        return fechaIngresa;
+    }
+
+    public void setFechaIngresa(Date fechaIngresa) {
+        this.fechaIngresa = fechaIngresa;
+    }
+
+    public Date getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(Date fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
+
+    public DefaultTableModel mostrar(String buscar) {
+        DefaultTableModel modelo;
+
+        String[] titulos = {"ID", "Idhabitacion", "Numero", "idcliente", "Cliente", "Fecha Reserva", "Fecha Ingreso", "Fecha Salida", "Precio",};
+
+        String[] registro = new String[9];
+
+        modelo = new DefaultTableModel(null, titulos);
+
+        sSQL = "select r.idreserva,h.numero,r.idhabitacion,r.idcliente,"
+                + "(select nombre from persona where idpersona=r.idcliente)as clienten,"
+                + "(select primer_apellido from persona where idpersona=r.idcliente)as clienteap,"
+                + "r.fechaIngreso,r.fechaSalida,r.fechaReserva,"
+                + "r.precio from reserva r inner join habitacion h on r.idhabitacion=h.idhabitacion where r.fechaReserva like '%" + buscar + "%' order by idreserva desc";
+
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+
+            while (rs.next()) {
+                registro[0] = rs.getString("idreserva");
+                registro[1] = rs.getString("idhabitacion");
+                registro[2] = rs.getString("numero");
+                registro[3] = rs.getString("idcliente");
+                registro[4] = rs.getString("clienten") + " " + rs.getString("clienteap");
+                registro[5] = rs.getString("fechaReserva");
+                registro[6] = rs.getString("fechaIngreso");
+                registro[7] = rs.getString("fechaSalida");
+                registro[8] = rs.getString("precio");
+
+                modelo.addRow(registro);
+
+            }
+            return modelo;
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return null;
+        }
+
+    }
+
+    public boolean insertar(Reserva dato) {
+        sSQL = "insert into reserva (idhabitacion,idcliente,fechaReserva,fechaIngreso,fechaSalida,precio)"
+                + "values (?,?,?,?,?,?)";
+        try {
+
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+            pst.setInt(1, dato.getIdHabitacion());
+            pst.setInt(2, dato.getIdCliente());
+            pst.setDate(3, dato.getFechaReserva());
+            pst.setDate(4, dato.getFechaIngresa());
+            pst.setDate(5, dato.getFechaSalida());
+            pst.setDouble(6, dato.getPagoTotal());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+    public boolean editar(Reserva dato) {
+        sSQL = "update reserva set idhabitacion=?,idcliente=?,fechaReserva=?,fechaIngreso=?,fechasalida=?,precio=?"
+                + " where idreserva=?";
+        try {
+
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+            pst.setInt(1, dato.getIdHabitacion());
+            pst.setInt(2, dato.getIdCliente());
+            pst.setDate(3, dato.getFechaReserva());
+            pst.setDate(4, dato.getFechaIngresa());
+            pst.setDate(5, dato.getFechaSalida());
+            pst.setDouble(6, dato.getPagoTotal());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+
+
+    public boolean eliminar(Reserva dato) {
+        sSQL = "delete from reserva where idreserva=?";
+
+        try {
+
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+
+            pst.setInt(1, dato.getIdReserva());
+
+            int n = pst.executeUpdate();
+
+            if (n != 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+}
+
+
+
+}
+
