@@ -1,0 +1,2856 @@
+//JFRAME CLASE CLIENTE
+
+package hotelcali;
+
+import Datos.Cliente;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import Datos.Conexion;
+import java.util.*;
+
+public class frmCliente extends javax.swing.JFrame {
+
+    public frmCliente() {
+
+        initComponents();
+        this.setLocationRelativeTo(null);
+        inHabilitarFrm();
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtPrimerApellido = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtSegundoApellido = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        cbTipoDocumento = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        txtNumeroDocumento = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtDireccion = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        btnCrear = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnCrear1 = new javax.swing.JButton();
+        fondoCliente = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/cinco-estrellas.png"))); // NOI18N
+        jLabel2.setText("Registro Cliente");
+        jLabel2.setToolTipText("");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(146, 107, 79));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        jPanel2.setForeground(new java.awt.Color(242, 242, 242));
+
+        jLabel1.setText("Nombre:");
+
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Primer Apellido:");
+
+        txtPrimerApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrimerApellidoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Segundo Apellido:");
+
+        txtSegundoApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSegundoApellidoActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Tipo Documento");
+
+        cbTipoDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pasaporte", "Identificacion" }));
+
+        jLabel9.setText("Numero Documento:");
+
+        jLabel6.setText("Direccion:");
+
+        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Telefono:");
+
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Correo:");
+
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoActionPerformed(evt);
+            }
+        });
+
+        btnCrear.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        btnCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/disco-flexible.png"))); // NOI18N
+        btnCrear.setText("Crear");
+        btnCrear.setBorderPainted(false);
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/boton-x.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnCrear1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        btnCrear1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/agregar.png"))); // NOI18N
+        btnCrear1.setText("Nuevo Cliente");
+        btnCrear1.setBorderPainted(false);
+        btnCrear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrear1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnCrear1)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnCrear)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnCancelar))
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(72, 72, 72)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cbTipoDocumento, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtSegundoApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNumeroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(215, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSegundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtNumeroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCrear1))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 840, 460));
+
+        fondoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/pexels-mikhail-nilov-7821349.jpg"))); // NOI18N
+        jPanel1.add(fondoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 700));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        pack();
+    }// </editor-fold>                        
+     void habilitarFrm() {
+        
+        txtNombre.setEnabled(true);
+        txtPrimerApellido.setEnabled(true);
+        txtSegundoApellido.setEnabled(true);
+        cbTipoDocumento.setEnabled(true);
+        txtNumeroDocumento.setEnabled(true);
+        txtDireccion.setEnabled(true);
+        txtTelefono.setEnabled(true);
+        txtCorreo.setEnabled(true);
+
+        btnCrear.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        
+       
+        txtNombre.setText("");
+        txtPrimerApellido.setText("");
+        txtSegundoApellido.setText("");
+        txtNumeroDocumento.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtCorreo.setText("");
+
+    }
+
+    void inHabilitarFrm() {
+        
+        txtNombre.setEnabled(false);
+        txtPrimerApellido.setEnabled(false);
+        txtSegundoApellido.setEnabled(false);
+        cbTipoDocumento.setEnabled(false);
+        txtNumeroDocumento.setEnabled(false);
+        txtDireccion.setEnabled(false);
+        txtTelefono.setEnabled(false);
+        txtCorreo.setEnabled(false);
+
+        btnCrear.setEnabled(false);
+        btnCancelar.setEnabled(false);
+        
+        
+        txtNombre.setText("");
+        txtPrimerApellido.setText("");
+        txtSegundoApellido.setText("");
+        txtNumeroDocumento.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtCorreo.setText("");
+
+    }
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+        if (txtNombre.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debe ingresar un Nombre para el cliente");
+            txtNombre.requestFocus();
+            return;
+        }
+        if (txtPrimerApellido.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debe ingresar el Primer Apellido del cliente");
+            txtPrimerApellido.requestFocus();
+            return;
+        }
+        if (txtSegundoApellido.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debe ingresar el Segundo Apellido del cliente");
+            txtSegundoApellido.requestFocus();
+            return;
+        }
+        if (txtTelefono.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debe ingresar el numero de telefono del cliente");
+            txtTelefono.requestFocus();
+            return;
+        }
+
+        Cliente datosCliente = new Cliente();
+
+        datosCliente.setNombre(txtNombre.getText());
+        datosCliente.setPrimerApellido(txtPrimerApellido.getText());
+        datosCliente.setSegundoApellido(txtSegundoApellido.getText());
+
+        int opcion = cbTipoDocumento.getSelectedIndex();
+
+        datosCliente.setTipoDocumento((String) cbTipoDocumento.getItemAt(opcion));
+
+        datosCliente.setNumDocumento(txtNumeroDocumento.getText());
+        datosCliente.setDireccion(txtDireccion.getText());
+        datosCliente.setTelefono(txtTelefono.getText());
+        datosCliente.setCorreo(txtCorreo.getText());
+
+        inHabilitarFrm();
+
+        if (datosCliente.insertar(datosCliente)) {
+            JOptionPane.showMessageDialog(rootPane, "El cliente fue registrado satisfactoriamente");
+            inHabilitarFrm();
+        }
+
+
+    }                                        
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        this.dispose();
+    }                                           
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        txtNombre.transferFocus();
+    }                                         
+
+    private void txtPrimerApellidoActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        txtPrimerApellido.transferFocus();
+    }                                                 
+
+    private void txtSegundoApellidoActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+        txtSegundoApellido.transferFocus();
+    }                                                  
+
+    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        txtDireccion.transferFocus();
+    }                                            
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        txtTelefono.transferFocus();
+    }                                           
+
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        txtCorreo.transferFocus();
+    }                                         
+
+    private void btnCrear1ActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        habilitarFrm();
+    }                                         
+
+    public static void main(String args[]) {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmCliente().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnCrear1;
+    private javax.swing.JComboBox<String> cbTipoDocumento;
+    private javax.swing.JLabel fondoCliente;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNumeroDocumento;
+    private javax.swing.JTextField txtPrimerApellido;
+    private javax.swing.JTextField txtSegundoApellido;
+    private javax.swing.JTextField txtTelefono;
+    // End of variables declaration                   
+}
+
+
+//JFRAME CLASE HABITACION
+
+package hotelcali;
+
+import Datos.Cliente;
+import javax.swing.table.DefaultTableModel;
+import Datos.Habitacion;
+import static hotelcali.frmReserva.txtCliente;
+import static hotelcali.frmReserva.txtHabitacion;
+import static hotelcali.frmReserva.txtidcliente;
+import static hotelcali.frmReserva.txtidhabitacion;
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+public class frmHabitacion extends javax.swing.JFrame {
+
+    DefaultTableModel modelo;
+    private String ac = "guardar";
+
+    public frmHabitacion() {
+
+        initComponents();
+        this.setLocationRelativeTo(null);
+        Mostrar("");
+        inHabilitar();
+
+        modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+    }
+
+    void Mostrar(String buscar) {
+        try {
+            DefaultTableModel modelo;
+            Habitacion habi = new Habitacion();
+            modelo = habi.mostrar(buscar);
+
+            jttablaListado.setModel(modelo);
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel3 = new javax.swing.JPanel();
+        jLabelRegistroHabitaciones = new javax.swing.JLabel();
+        txtidHabitacion = new javax.swing.JTextField();
+        txfNumero = new javax.swing.JTextField();
+        txtNumero = new javax.swing.JTextField();
+        txFPiso = new javax.swing.JTextField();
+        cbPisoHabitacion = new javax.swing.JComboBox<>();
+        txfTipoHabitacion = new javax.swing.JTextField();
+        cbTipoHabitacion = new javax.swing.JComboBox<>();
+        txfPrecio = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
+        txfEstado = new javax.swing.JTextField();
+        cbEstado = new javax.swing.JComboBox<>();
+        txfDescripcion = new javax.swing.JTextField();
+        txtDescripcionHabitacion = new javax.swing.JScrollPane();
+        txtDescripcion = new javax.swing.JTextArea();
+        btnReserva = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jttablaListado = new javax.swing.JTable();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registro Habitaciones");
+        setResizable(false);
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setPreferredSize(new java.awt.Dimension(579, 560));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelRegistroHabitaciones.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabelRegistroHabitaciones.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelRegistroHabitaciones.setText("Registro Habitaciones");
+        jPanel3.add(jLabelRegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
+        jPanel3.add(txtidHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 160, -1));
+
+        txfNumero.setEditable(false);
+        txfNumero.setBackground(new java.awt.Color(104, 79, 56));
+        txfNumero.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txfNumero.setForeground(new java.awt.Color(255, 255, 255));
+        txfNumero.setText("Numero:");
+        txfNumero.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(txfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 110, -1));
+        jPanel3.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 106, -1));
+
+        txFPiso.setEditable(false);
+        txFPiso.setBackground(new java.awt.Color(104, 79, 56));
+        txFPiso.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txFPiso.setForeground(new java.awt.Color(255, 255, 255));
+        txFPiso.setText("Piso:");
+        txFPiso.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(txFPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 110, -1));
+
+        cbPisoHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        cbPisoHabitacion.setPreferredSize(new java.awt.Dimension(64, 22));
+        jPanel3.add(cbPisoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 106, -1));
+
+        txfTipoHabitacion.setEditable(false);
+        txfTipoHabitacion.setBackground(new java.awt.Color(104, 79, 56));
+        txfTipoHabitacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txfTipoHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        txfTipoHabitacion.setText("Tipo Habitacion:");
+        txfTipoHabitacion.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(txfTipoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 110, -1));
+
+        cbTipoHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Individual", "Familiar", "Deluxe" }));
+        cbTipoHabitacion.setPreferredSize(new java.awt.Dimension(64, 22));
+        jPanel3.add(cbTipoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 110, -1));
+
+        txfPrecio.setEditable(false);
+        txfPrecio.setBackground(new java.awt.Color(104, 79, 56));
+        txfPrecio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txfPrecio.setForeground(new java.awt.Color(255, 255, 255));
+        txfPrecio.setText("Precio:");
+        txfPrecio.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(txfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 110, -1));
+        jPanel3.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 110, -1));
+
+        txfEstado.setEditable(false);
+        txfEstado.setBackground(new java.awt.Color(104, 79, 56));
+        txfEstado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txfEstado.setForeground(new java.awt.Color(255, 255, 255));
+        txfEstado.setText("Estado:");
+        txfEstado.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(txfEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 110, -1));
+
+        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "No Disponble" }));
+        cbEstado.setPreferredSize(new java.awt.Dimension(64, 22));
+        jPanel3.add(cbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 110, -1));
+
+        txfDescripcion.setEditable(false);
+        txfDescripcion.setBackground(new java.awt.Color(104, 79, 56));
+        txfDescripcion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txfDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        txfDescripcion.setText("Descripcion:");
+        jPanel3.add(txfDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 110, -1));
+
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setRows(5);
+        txtDescripcionHabitacion.setViewportView(txtDescripcion);
+
+        jPanel3.add(txtDescripcionHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 245, 75));
+
+        btnReserva.setBackground(new java.awt.Color(104, 79, 56));
+        btnReserva.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReserva.setForeground(new java.awt.Color(255, 255, 255));
+        btnReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/agregar.png"))); // NOI18N
+        btnReserva.setText("Nueva");
+        btnReserva.setBorderPainted(false);
+        btnReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservaActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 458, -1, -1));
+
+        btnAgregar.setBackground(new java.awt.Color(104, 79, 56));
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/disco-flexible.png"))); // NOI18N
+        btnAgregar.setText("Guardar");
+        btnAgregar.setBorderPainted(false);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 462, -1, -1));
+
+        btnCancelar.setBackground(new java.awt.Color(104, 79, 56));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/archivo.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 462, -1, -1));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/custom-2.png"))); // NOI18N
+        jPanel3.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 560));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Buscar");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 47, -1, -1));
+
+        jttablaListado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Numero", "Piso", "Precio", "Tipo Habitacion", "Estado", "Descripcion"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jttablaListado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jttablaListadoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jttablaListado);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 77, 579, 342));
+
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 44, 215, -1));
+
+        btnBuscar.setBackground(new java.awt.Color(104, 79, 56));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/lupa.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.setToolTipText("");
+        btnBuscar.setBorderPainted(false);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 40, -1, -1));
+
+        btnBorrar.setBackground(new java.awt.Color(104, 79, 56));
+        btnBorrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/boton-eliminar.png"))); // NOI18N
+        btnBorrar.setText("Borrar");
+        btnBorrar.setBorderPainted(false);
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+
+        btnSalir.setBackground(new java.awt.Color(104, 79, 56));
+        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/salida.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.setBorderPainted(false);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 40, -1, -1));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/custom – 3.png"))); // NOI18N
+        jPanel2.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 560));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    void habilitar() {
+
+        txtidHabitacion.setVisible(true);
+
+        txtNumero.setEnabled(true);
+        cbPisoHabitacion.setEnabled(true);
+        txtPrecio.setEnabled(true);
+        cbTipoHabitacion.setEnabled(true);
+        txtDescripcion.setEnabled(true);
+        cbEstado.setEnabled(true);
+
+        btnAgregar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnBorrar.setEnabled(true);
+        txtNumero.setText("");
+        txtPrecio.setText("");
+        txtDescripcion.setText("");
+
+    }
+
+    void inHabilitar() {
+        txtidHabitacion.setVisible(false);
+
+        txtNumero.setEnabled(false);
+        cbPisoHabitacion.setEnabled(false);
+        txtPrecio.setEnabled(false);
+        cbTipoHabitacion.setEnabled(false);
+        txtDescripcion.setEnabled(false);
+        cbEstado.setEnabled(false);
+
+        btnAgregar.setEnabled(false);
+        btnCancelar.setEnabled(false);
+        btnBorrar.setEnabled(false);
+        txtNumero.setText("");
+        txtPrecio.setText("");
+        txtDescripcion.setText("");
+    }
+    private void btnReservaActionPerformed(java.awt.event.ActionEvent evt) {                                           
+
+        habilitar();
+        btnAgregar.setText("Guardar");
+        ac = "guardar";
+    }                                          
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+
+        if (txtNumero.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar un Número de Habitación");
+            txtNumero.requestFocus();
+            return;
+        }
+        if (txtDescripcion.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar una descripción para la Habitación Habitación");
+            txtDescripcion.requestFocus();
+            return;
+        }
+
+        if (txtPrecio.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar un precio diario para la Habitación Habitación");
+            txtPrecio.requestFocus();
+            return;
+        }
+
+        Habitacion habitacion = new Habitacion();
+
+        habitacion.setNumero(txtNumero.getText());
+        int seleccionado = cbPisoHabitacion.getSelectedIndex();
+        habitacion.setPiso((String) cbPisoHabitacion.getItemAt(seleccionado));
+
+        habitacion.setPrecio(Double.parseDouble(txtPrecio.getText()));
+        seleccionado = cbEstado.getSelectedIndex();
+        habitacion.setEstado((String) cbEstado.getItemAt(seleccionado));
+        seleccionado = cbTipoHabitacion.getSelectedIndex();
+        habitacion.setTipo((String) cbTipoHabitacion.getItemAt(seleccionado));
+        habitacion.setDescripcion(txtDescripcion.getText());
+
+        if (ac.equals("guardar")) {
+            if (habitacion.insertar(habitacion)) {
+                JOptionPane.showMessageDialog(rootPane, "La habitación fue registrada satisfactoriamente");
+                Mostrar("");
+                inHabilitar();
+
+                if (Habitacion.habitaciones.contains(habitacion)) {
+                    JOptionPane.showMessageDialog(rootPane, "La habitación ya ha sido seleccionada");
+                } else {
+                    Habitacion.habitaciones.add(habitacion);
+                    JOptionPane.showMessageDialog(rootPane, "La habitación fue registrada satisfactoriamente");
+                    Mostrar("");
+                    inHabilitar();
+                }
+
+            }
+
+        } else if (ac.equals("editar")) {
+            habitacion.setIdHabitacion(Integer.parseInt(txtidHabitacion.getText()));
+
+            if (habitacion.editar(habitacion)) {
+                JOptionPane.showMessageDialog(rootPane, "La habitación fue Editada satisfactoriamente");
+                Mostrar("");
+                inHabilitar();
+            }
+        }
+
+
+    }                                          
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+
+        int fila = jttablaListado.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una habitación");
+        } else {
+            Habitacion habitacion = Habitacion.habitaciones.get(fila);
+            int confirmacion = JOptionPane.showConfirmDialog(this, "¿Está seguro de eliminar la habitación seleccionada?");
+            if (habitacion.eliminar(habitacion)) {
+                Habitacion.habitaciones.remove(habitacion);
+                JOptionPane.showMessageDialog(this, "Habitación eliminada correctamente");
+                Mostrar("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Ocurrió un error al eliminar la habitación");
+            }
+        }
+
+
+    }                                         
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        this.dispose();        // TODO add your handling code here:
+    }                                           
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        Mostrar(txtBuscar.getText());
+    }                                         
+
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+    }                                         
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        this.dispose();
+    }                                        
+
+    private void jttablaListadoMouseClicked(java.awt.event.MouseEvent evt) {                                            
+        btnAgregar.setText("Editar");
+        habilitar();
+
+        ac = "editar";
+
+        int filaSeleccionada = jttablaListado.getSelectedRow();
+        if (filaSeleccionada >= 0) {
+            // Obtener los datos de la fila seleccionada
+            String idHabitacion = jttablaListado.getValueAt(filaSeleccionada, 0).toString();
+            String numero = jttablaListado.getValueAt(filaSeleccionada, 1).toString();
+            String piso = jttablaListado.getValueAt(filaSeleccionada, 2).toString();
+            String tipo = jttablaListado.getValueAt(filaSeleccionada, 3).toString();
+            String precio = jttablaListado.getValueAt(filaSeleccionada, 4).toString();
+            String estado = jttablaListado.getValueAt(filaSeleccionada, 5).toString();
+            String descripcion = jttablaListado.getValueAt(filaSeleccionada, 6).toString();
+
+            // Copiar los datos a los campos de ingreso
+            txtidHabitacion.setText(idHabitacion);
+            txtNumero.setText(numero);
+            cbPisoHabitacion.setSelectedItem(piso);
+            txtPrecio.setText(precio);
+            cbTipoHabitacion.setSelectedItem(tipo);
+            cbEstado.setSelectedItem(estado);
+            txtDescripcion.setText(descripcion);
+        }
+
+    }                                           
+
+    public static void main(String args[]) {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmHabitacion().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnReserva;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox<String> cbEstado;
+    private javax.swing.JComboBox<String> cbPisoHabitacion;
+    private javax.swing.JComboBox<String> cbTipoHabitacion;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelRegistroHabitaciones;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jttablaListado;
+    private javax.swing.JTextField txFPiso;
+    private javax.swing.JTextField txfDescripcion;
+    private javax.swing.JTextField txfEstado;
+    private javax.swing.JTextField txfNumero;
+    private javax.swing.JTextField txfPrecio;
+    private javax.swing.JTextField txfTipoHabitacion;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JScrollPane txtDescripcionHabitacion;
+    private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtidHabitacion;
+    // End of variables declaration                   
+}
+
+JFRAME CLASE CLIENTE -- LISTA
+
+package hotelcali;
+
+import Datos.Cliente;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+
+public class frmListaCliente extends javax.swing.JFrame {
+
+    
+    public frmListaCliente() {
+        initComponents();
+        mostrar("");
+        this.setLocationRelativeTo(null);
+    }
+    
+    void ocultar_columnas() {
+        tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
+    
+     void mostrar(String buscar) {
+        try {
+            DefaultTableModel modelo;
+            Cliente func = new Cliente();
+            modelo = func.mostrarvista(buscar);
+
+            tablalistado.setModel(modelo);
+            ocultar_columnas();
+           
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+    }
+    
+
+ 
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablalistado = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        txtbuscar = new javax.swing.JTextField();
+        btnbuscar = new javax.swing.JButton();
+        Fondo1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Lista de Clientes");
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablalistado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablalistado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablalistadoMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tablalistadoMousePressed(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tablalistado);
+
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 610, 360));
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Buscar");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 45, -1, -1));
+        jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 42, 169, -1));
+
+        btnbuscar.setBackground(new java.awt.Color(51, 51, 51));
+        btnbuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/lupa.png"))); // NOI18N
+        btnbuscar.setText("Buscar");
+        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 38, 98, -1));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/custom – 3.png"))); // NOI18N
+        jPanel2.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 490));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void tablalistadoMouseClicked(java.awt.event.MouseEvent evt) {                                          
+        int filaseleccionada;
+        try {
+            filaseleccionada = tablalistado.getSelectedRow();
+            if (filaseleccionada == -1) {
+                JOptionPane.showMessageDialog(null, "No ha selecionado ninguna fila");
+
+            } else {
+                String codigo = (String) tablalistado.getValueAt(filaseleccionada, 0);
+                String descripcion = (String) tablalistado.getValueAt(filaseleccionada, 1);
+                String precio = (String) tablalistado.getValueAt(filaseleccionada, 2);
+                
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR " + e.getMessage() + "\n Intentelo de nuevo", ".::Erorr en la operacion::.", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }                                         
+
+    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+       
+        mostrar(txtbuscar.getText());
+    }                                         
+
+    private void tablalistadoMousePressed(java.awt.event.MouseEvent evt) {                                          
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            int fila= tablalistado.getSelectedRow();
+            String cod;
+            String valor;
+            
+            cod=tablalistado.getValueAt(fila, 0).toString();
+            valor =tablalistado.getValueAt(fila, 1).toString() +" " +tablalistado.getValueAt(fila, 2).toString() +" "+ tablalistado.getValueAt(fila, 3).toString();
+            
+            frmReserva.txtCliente.setText(valor);
+            frmReserva.txtidcliente.setText(cod);
+            this.dispose();
+            
+        }
+    }                                         
+
+  
+    public static void main(String args[]) {
+       
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmListaCliente().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JLabel Fondo1;
+    private javax.swing.JButton btnbuscar;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tablalistado;
+    private javax.swing.JTextField txtbuscar;
+    // End of variables declaration                   
+}
+
+
+//JFRAME HABITACION - LISTA
+
+package hotelcali;
+
+import Datos.Habitacion;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+public class frmListaHabitacion extends javax.swing.JFrame {
+
+    public frmListaHabitacion() {
+        initComponents();
+        mostrar("");
+        this.setLocationRelativeTo(null);
+
+    }
+
+    void ocultar_columnas() {
+        tablalistado.getColumnModel().getColumn(0).setMaxWidth(0);
+        tablalistado.getColumnModel().getColumn(0).setMinWidth(0);
+        tablalistado.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
+
+    void mostrar(String buscar) {
+        try {
+            DefaultTableModel modelo;
+            Habitacion func = new Habitacion();
+            modelo = func.mostrarvista(buscar);
+
+            tablalistado.setModel(modelo);
+            ocultar_columnas();
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablalistado = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        txtbuscar = new javax.swing.JTextField();
+        btnbuscar = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Lista de Habitaciones");
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setToolTipText("");
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.setName("Lista Habitaciones"); // NOI18N
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tablalistado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablalistado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablalistadoMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tablalistadoMousePressed(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tablalistado);
+
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 610, 360));
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Buscar");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 45, -1, -1));
+        jPanel2.add(txtbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 42, 169, -1));
+
+        btnbuscar.setBackground(new java.awt.Color(51, 51, 51));
+        btnbuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/lupa.png"))); // NOI18N
+        btnbuscar.setText("Buscar");
+        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 38, 98, -1));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/custom – 3.png"))); // NOI18N
+        jPanel2.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 490));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        
+        mostrar(txtbuscar.getText());
+    }                                         
+
+    private void tablalistadoMousePressed(java.awt.event.MouseEvent evt) {                                          
+        if (evt.getClickCount() == 2) {
+            int fila = tablalistado.getSelectedRow();
+            String cod;
+            String valor;
+            
+            cod=tablalistado.getValueAt(fila, 0).toString();
+            valor=tablalistado.getValueAt(fila, 1).toString();
+            frmReserva.txtidhabitacion.setText(cod);
+            frmReserva.txtHabitacion.setText(valor);
+            this.dispose();
+
+        }
+    }                                         
+
+    private void tablalistadoMouseClicked(java.awt.event.MouseEvent evt) {                                          
+
+    }                                         
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(frmListaHabitacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(frmListaHabitacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(frmListaHabitacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(frmListaHabitacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmListaHabitacion().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton btnbuscar;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tablalistado;
+    private javax.swing.JTextField txtbuscar;
+    // End of variables declaration                   
+}
+
+//JFRAME LOGIN
+
+package hotelcali;
+
+import javax.swing.JOptionPane;
+import Datos.Conexion;
+
+public class frmLogin extends javax.swing.JFrame  {
+
+    private String contrasena = "1234";
+    private String usuario = "admin";
+
+    public frmLogin() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
+ 
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtcontrasena = new javax.swing.JPasswordField();
+        txtnombreUsuario = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("HotelCali");
+        setResizable(false);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/hotel.png"))); // NOI18N
+        jLabel3.setText("BIENVENIDOS AL HOTELCALI");
+        jLabel3.setToolTipText("");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, -1));
+
+        txtcontrasena.setBorder(null);
+        jPanel1.add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 320, 40));
+
+        txtnombreUsuario.setBorder(null);
+        jPanel1.add(txtnombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 320, 40));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Nombre de Usuario:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, -1, -1));
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Contraseña:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setText("Ingresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 90, 30));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/custom – 1.png"))); // NOI18N
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 500));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        try {
+            String usu = txtnombreUsuario.getText();
+            String contra = txtcontrasena.getText();
+            
+            if (usu.equals(this.usuario)) {
+                
+                if (contra.equals(this.contrasena)) {
+                    frmMain main = new frmMain();
+                    main.setVisible(true);
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "Ingrese una contraseña valida");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "No se encontro el usuario registrado ");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, JOptionPane.ERROR_MESSAGE);
+        }
+    }                                        
+
+    public static void main(String args[]) {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmLogin().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField txtcontrasena;
+    private javax.swing.JTextField txtnombreUsuario;
+    // End of variables declaration                   
+}
+
+//JFRAME MAIN
+
+package hotelcali;
+
+import Datos.Conexion;
+
+public class frmMain extends javax.swing.JFrame {
+
+    public frmMain() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        btnReserva = new javax.swing.JButton();
+        btnClientes = new javax.swing.JButton();
+        btnHabitacion = new javax.swing.JButton();
+        btnPagos = new javax.swing.JButton();
+        fondoMain = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Hotel-CALI");
+        setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/hotel.png"))); // NOI18N
+        jLabel3.setText("BIENVENIDOS AL HOTELCALI");
+        jLabel3.setToolTipText("");
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel3.setAlignmentY(0.0F);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 830, -1));
+
+        btnReserva.setBackground(java.awt.SystemColor.activeCaption);
+        btnReserva.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnReserva.setForeground(new java.awt.Color(255, 255, 255));
+        btnReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/calendario (1).png"))); // NOI18N
+        btnReserva.setText("Reserva");
+        btnReserva.setAlignmentY(0.0F);
+        btnReserva.setBorder(null);
+        btnReserva.setContentAreaFilled(false);
+        btnReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReserva.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnReserva.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 230, 180));
+
+        btnClientes.setBackground(java.awt.SystemColor.activeCaptionBorder);
+        btnClientes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnClientes.setForeground(new java.awt.Color(255, 255, 255));
+        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/sitio-web.png"))); // NOI18N
+        btnClientes.setText("Clientes");
+        btnClientes.setAlignmentY(0.0F);
+        btnClientes.setBorder(null);
+        btnClientes.setContentAreaFilled(false);
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 350, 230, 180));
+
+        btnHabitacion.setBackground(java.awt.SystemColor.activeCaption);
+        btnHabitacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        btnHabitacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/cama.png"))); // NOI18N
+        btnHabitacion.setText("Habitacion");
+        btnHabitacion.setAlignmentY(0.0F);
+        btnHabitacion.setBorder(null);
+        btnHabitacion.setContentAreaFilled(false);
+        btnHabitacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnHabitacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHabitacion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHabitacionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 230, 180));
+
+        btnPagos.setBackground(java.awt.SystemColor.activeCaption);
+        btnPagos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnPagos.setForeground(new java.awt.Color(255, 255, 255));
+        btnPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/metodo-de-pago.png"))); // NOI18N
+        btnPagos.setText("Pago");
+        btnPagos.setAlignmentY(0.0F);
+        btnPagos.setBorder(null);
+        btnPagos.setContentAreaFilled(false);
+        btnPagos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPagos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPagos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 580, 230, 180));
+
+        fondoMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/Web 1920 – 1.png"))); // NOI18N
+        jPanel1.add(fondoMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        frmPagosCliente pago = new frmPagosCliente();
+        pago.toFront();
+        pago.setVisible(true);
+    }                                        
+
+    private void btnHabitacionActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        frmHabitacion habitacion = new frmHabitacion();
+        habitacion.toFront();
+        habitacion.setVisible(true);
+    }                                             
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        frmCliente clientes = new frmCliente();
+        clientes.toFront();
+        clientes.setVisible(true);
+    }                                           
+
+    private void btnReservaActionPerformed(java.awt.event.ActionEvent evt) {                                           
+
+        frmReserva reserva = new frmReserva();
+        reserva.toFront();
+        reserva.setVisible(true);
+    }                                          
+
+    public static void main(String args[]) {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmMain().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnHabitacion;
+    private javax.swing.JButton btnPagos;
+    private javax.swing.JButton btnReserva;
+    private javax.swing.JLabel fondoMain;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    // End of variables declaration                   
+}
+
+//JFRAME PAGO
+
+package hotelcali;
+
+import Datos.Cliente;
+import javax.swing.table.DefaultTableModel;
+import Datos.Habitacion;
+import static hotelcali.frmReserva.txtCliente;
+import static hotelcali.frmReserva.txtHabitacion;
+import static hotelcali.frmReserva.txtidcliente;
+import static hotelcali.frmReserva.txtidhabitacion;
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+public class frmHabitacion extends javax.swing.JFrame {
+
+    DefaultTableModel modelo;
+    private String ac = "guardar";
+
+    public frmHabitacion() {
+
+        initComponents();
+        this.setLocationRelativeTo(null);
+        Mostrar("");
+        inHabilitar();
+
+        modelo = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+    }
+
+    void Mostrar(String buscar) {
+        try {
+            DefaultTableModel modelo;
+            Habitacion habi = new Habitacion();
+            modelo = habi.mostrar(buscar);
+
+            jttablaListado.setModel(modelo);
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel3 = new javax.swing.JPanel();
+        jLabelRegistroHabitaciones = new javax.swing.JLabel();
+        txtidHabitacion = new javax.swing.JTextField();
+        txfNumero = new javax.swing.JTextField();
+        txtNumero = new javax.swing.JTextField();
+        txFPiso = new javax.swing.JTextField();
+        cbPisoHabitacion = new javax.swing.JComboBox<>();
+        txfTipoHabitacion = new javax.swing.JTextField();
+        cbTipoHabitacion = new javax.swing.JComboBox<>();
+        txfPrecio = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
+        txfEstado = new javax.swing.JTextField();
+        cbEstado = new javax.swing.JComboBox<>();
+        txfDescripcion = new javax.swing.JTextField();
+        txtDescripcionHabitacion = new javax.swing.JScrollPane();
+        txtDescripcion = new javax.swing.JTextArea();
+        btnReserva = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jttablaListado = new javax.swing.JTable();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registro Habitaciones");
+        setResizable(false);
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setPreferredSize(new java.awt.Dimension(579, 560));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelRegistroHabitaciones.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabelRegistroHabitaciones.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelRegistroHabitaciones.setText("Registro Habitaciones");
+        jPanel3.add(jLabelRegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
+        jPanel3.add(txtidHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 160, -1));
+
+        txfNumero.setEditable(false);
+        txfNumero.setBackground(new java.awt.Color(104, 79, 56));
+        txfNumero.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txfNumero.setForeground(new java.awt.Color(255, 255, 255));
+        txfNumero.setText("Numero:");
+        txfNumero.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(txfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 110, -1));
+        jPanel3.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 106, -1));
+
+        txFPiso.setEditable(false);
+        txFPiso.setBackground(new java.awt.Color(104, 79, 56));
+        txFPiso.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txFPiso.setForeground(new java.awt.Color(255, 255, 255));
+        txFPiso.setText("Piso:");
+        txFPiso.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(txFPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 110, -1));
+
+        cbPisoHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        cbPisoHabitacion.setPreferredSize(new java.awt.Dimension(64, 22));
+        jPanel3.add(cbPisoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 106, -1));
+
+        txfTipoHabitacion.setEditable(false);
+        txfTipoHabitacion.setBackground(new java.awt.Color(104, 79, 56));
+        txfTipoHabitacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txfTipoHabitacion.setForeground(new java.awt.Color(255, 255, 255));
+        txfTipoHabitacion.setText("Tipo Habitacion:");
+        txfTipoHabitacion.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(txfTipoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 110, -1));
+
+        cbTipoHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Individual", "Familiar", "Deluxe" }));
+        cbTipoHabitacion.setPreferredSize(new java.awt.Dimension(64, 22));
+        jPanel3.add(cbTipoHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 110, -1));
+
+        txfPrecio.setEditable(false);
+        txfPrecio.setBackground(new java.awt.Color(104, 79, 56));
+        txfPrecio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txfPrecio.setForeground(new java.awt.Color(255, 255, 255));
+        txfPrecio.setText("Precio:");
+        txfPrecio.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(txfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 110, -1));
+        jPanel3.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 110, -1));
+
+        txfEstado.setEditable(false);
+        txfEstado.setBackground(new java.awt.Color(104, 79, 56));
+        txfEstado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txfEstado.setForeground(new java.awt.Color(255, 255, 255));
+        txfEstado.setText("Estado:");
+        txfEstado.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(txfEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 110, -1));
+
+        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "No Disponble" }));
+        cbEstado.setPreferredSize(new java.awt.Dimension(64, 22));
+        jPanel3.add(cbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 110, -1));
+
+        txfDescripcion.setEditable(false);
+        txfDescripcion.setBackground(new java.awt.Color(104, 79, 56));
+        txfDescripcion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txfDescripcion.setForeground(new java.awt.Color(255, 255, 255));
+        txfDescripcion.setText("Descripcion:");
+        jPanel3.add(txfDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 110, -1));
+
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setRows(5);
+        txtDescripcionHabitacion.setViewportView(txtDescripcion);
+
+        jPanel3.add(txtDescripcionHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 245, 75));
+
+        btnReserva.setBackground(new java.awt.Color(104, 79, 56));
+        btnReserva.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReserva.setForeground(new java.awt.Color(255, 255, 255));
+        btnReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/agregar.png"))); // NOI18N
+        btnReserva.setText("Nueva");
+        btnReserva.setBorderPainted(false);
+        btnReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservaActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 458, -1, -1));
+
+        btnAgregar.setBackground(new java.awt.Color(104, 79, 56));
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/disco-flexible.png"))); // NOI18N
+        btnAgregar.setText("Guardar");
+        btnAgregar.setBorderPainted(false);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 462, -1, -1));
+
+        btnCancelar.setBackground(new java.awt.Color(104, 79, 56));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/archivo.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 462, -1, -1));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/custom-2.png"))); // NOI18N
+        jPanel3.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 560));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Buscar");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 47, -1, -1));
+
+        jttablaListado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Numero", "Piso", "Precio", "Tipo Habitacion", "Estado", "Descripcion"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jttablaListado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jttablaListadoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jttablaListado);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 77, 579, 342));
+
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 44, 215, -1));
+
+        btnBuscar.setBackground(new java.awt.Color(104, 79, 56));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/lupa.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.setToolTipText("");
+        btnBuscar.setBorderPainted(false);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 40, -1, -1));
+
+        btnBorrar.setBackground(new java.awt.Color(104, 79, 56));
+        btnBorrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/boton-eliminar.png"))); // NOI18N
+        btnBorrar.setText("Borrar");
+        btnBorrar.setBorderPainted(false);
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+
+        btnSalir.setBackground(new java.awt.Color(104, 79, 56));
+        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/salida.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.setBorderPainted(false);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 40, -1, -1));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/custom – 3.png"))); // NOI18N
+        jPanel2.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 560));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    void habilitar() {
+
+        txtidHabitacion.setVisible(true);
+
+        txtNumero.setEnabled(true);
+        cbPisoHabitacion.setEnabled(true);
+        txtPrecio.setEnabled(true);
+        cbTipoHabitacion.setEnabled(true);
+        txtDescripcion.setEnabled(true);
+        cbEstado.setEnabled(true);
+
+        btnAgregar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnBorrar.setEnabled(true);
+        txtNumero.setText("");
+        txtPrecio.setText("");
+        txtDescripcion.setText("");
+
+    }
+
+    void inHabilitar() {
+        txtidHabitacion.setVisible(false);
+
+        txtNumero.setEnabled(false);
+        cbPisoHabitacion.setEnabled(false);
+        txtPrecio.setEnabled(false);
+        cbTipoHabitacion.setEnabled(false);
+        txtDescripcion.setEnabled(false);
+        cbEstado.setEnabled(false);
+
+        btnAgregar.setEnabled(false);
+        btnCancelar.setEnabled(false);
+        btnBorrar.setEnabled(false);
+        txtNumero.setText("");
+        txtPrecio.setText("");
+        txtDescripcion.setText("");
+    }
+    private void btnReservaActionPerformed(java.awt.event.ActionEvent evt) {                                           
+
+        habilitar();
+        btnAgregar.setText("Guardar");
+        ac = "guardar";
+    }                                          
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+
+        if (txtNumero.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar un Número de Habitación");
+            txtNumero.requestFocus();
+            return;
+        }
+        if (txtDescripcion.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar una descripción para la Habitación Habitación");
+            txtDescripcion.requestFocus();
+            return;
+        }
+
+        if (txtPrecio.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar un precio diario para la Habitación Habitación");
+            txtPrecio.requestFocus();
+            return;
+        }
+
+        Habitacion habitacion = new Habitacion();
+
+        habitacion.setNumero(txtNumero.getText());
+        int seleccionado = cbPisoHabitacion.getSelectedIndex();
+        habitacion.setPiso((String) cbPisoHabitacion.getItemAt(seleccionado));
+
+        habitacion.setPrecio(Double.parseDouble(txtPrecio.getText()));
+        seleccionado = cbEstado.getSelectedIndex();
+        habitacion.setEstado((String) cbEstado.getItemAt(seleccionado));
+        seleccionado = cbTipoHabitacion.getSelectedIndex();
+        habitacion.setTipo((String) cbTipoHabitacion.getItemAt(seleccionado));
+        habitacion.setDescripcion(txtDescripcion.getText());
+
+        if (ac.equals("guardar")) {
+            if (habitacion.insertar(habitacion)) {
+                JOptionPane.showMessageDialog(rootPane, "La habitación fue registrada satisfactoriamente");
+                Mostrar("");
+                inHabilitar();
+
+                if (Habitacion.habitaciones.contains(habitacion)) {
+                    JOptionPane.showMessageDialog(rootPane, "La habitación ya ha sido seleccionada");
+                } else {
+                    Habitacion.habitaciones.add(habitacion);
+                    JOptionPane.showMessageDialog(rootPane, "La habitación fue registrada satisfactoriamente");
+                    Mostrar("");
+                    inHabilitar();
+                }
+
+            }
+
+        } else if (ac.equals("editar")) {
+            habitacion.setIdHabitacion(Integer.parseInt(txtidHabitacion.getText()));
+
+            if (habitacion.editar(habitacion)) {
+                JOptionPane.showMessageDialog(rootPane, "La habitación fue Editada satisfactoriamente");
+                Mostrar("");
+                inHabilitar();
+            }
+        }
+
+
+    }                                          
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+
+        int fila = jttablaListado.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una habitación");
+        } else {
+            Habitacion habitacion = Habitacion.habitaciones.get(fila);
+            int confirmacion = JOptionPane.showConfirmDialog(this, "¿Está seguro de eliminar la habitación seleccionada?");
+            if (habitacion.eliminar(habitacion)) {
+                Habitacion.habitaciones.remove(habitacion);
+                JOptionPane.showMessageDialog(this, "Habitación eliminada correctamente");
+                Mostrar("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Ocurrió un error al eliminar la habitación");
+            }
+        }
+
+
+    }                                         
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        this.dispose();        // TODO add your handling code here:
+    }                                           
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        Mostrar(txtBuscar.getText());
+    }                                         
+
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+    }                                         
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        this.dispose();
+    }                                        
+
+    private void jttablaListadoMouseClicked(java.awt.event.MouseEvent evt) {                                            
+        btnAgregar.setText("Editar");
+        habilitar();
+
+        ac = "editar";
+
+        int filaSeleccionada = jttablaListado.getSelectedRow();
+        if (filaSeleccionada >= 0) {
+            // Obtener los datos de la fila seleccionada
+            String idHabitacion = jttablaListado.getValueAt(filaSeleccionada, 0).toString();
+            String numero = jttablaListado.getValueAt(filaSeleccionada, 1).toString();
+            String piso = jttablaListado.getValueAt(filaSeleccionada, 2).toString();
+            String tipo = jttablaListado.getValueAt(filaSeleccionada, 3).toString();
+            String precio = jttablaListado.getValueAt(filaSeleccionada, 4).toString();
+            String estado = jttablaListado.getValueAt(filaSeleccionada, 5).toString();
+            String descripcion = jttablaListado.getValueAt(filaSeleccionada, 6).toString();
+
+            // Copiar los datos a los campos de ingreso
+            txtidHabitacion.setText(idHabitacion);
+            txtNumero.setText(numero);
+            cbPisoHabitacion.setSelectedItem(piso);
+            txtPrecio.setText(precio);
+            cbTipoHabitacion.setSelectedItem(tipo);
+            cbEstado.setSelectedItem(estado);
+            txtDescripcion.setText(descripcion);
+        }
+
+    }                                           
+
+    public static void main(String args[]) {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmHabitacion().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnReserva;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox<String> cbEstado;
+    private javax.swing.JComboBox<String> cbPisoHabitacion;
+    private javax.swing.JComboBox<String> cbTipoHabitacion;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelRegistroHabitaciones;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jttablaListado;
+    private javax.swing.JTextField txFPiso;
+    private javax.swing.JTextField txfDescripcion;
+    private javax.swing.JTextField txfEstado;
+    private javax.swing.JTextField txfNumero;
+    private javax.swing.JTextField txfPrecio;
+    private javax.swing.JTextField txfTipoHabitacion;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JScrollPane txtDescripcionHabitacion;
+    private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtidHabitacion;
+    // End of variables declaration                   
+}
+
+//JFRAME PAGOS CLIENTE
+
+package hotelcali;
+
+import Datos.Pago;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+public class frmPagosCliente extends javax.swing.JFrame {
+
+    public frmPagosCliente() {
+        initComponents();
+        mostrar("");
+        this.setLocationRelativeTo(null);
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    void mostrar(String buscar) {
+        try {
+            DefaultTableModel modelo;
+            Pago pago = new Pago();
+            modelo = pago.mostrarPagos(buscar);
+            tablalistado.setModel(modelo);
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        btneliminar = new javax.swing.JButton();
+        btnsalir = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablalistado = new javax.swing.JTable();
+        Fondo1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Buscar");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 47, -1, -1));
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 44, 215, -1));
+
+        btnBuscar.setBackground(new java.awt.Color(51, 51, 51));
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/lupa.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, -1));
+
+        btneliminar.setBackground(new java.awt.Color(51, 51, 51));
+        btneliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/boton-eliminar.png"))); // NOI18N
+        btneliminar.setText("Eliminar");
+        btneliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btneliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+
+        btnsalir.setBackground(new java.awt.Color(51, 51, 51));
+        btnsalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/salida.png"))); // NOI18N
+        btnsalir.setText("Salir");
+        btnsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, -1, -1));
+
+        tablalistado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(tablalistado);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 568, 310));
+
+        Fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/custom – 3.png"))); // NOI18N
+        jPanel1.add(Fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 520));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        mostrar(txtBuscar.getText());
+    }                                         
+
+    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        if (tablalistado.getSelectedRow() != -1) { // Verificar si hay alguna fila seleccionada
+            int confirmacion = JOptionPane.showConfirmDialog(rootPane, "Estás seguro de Eliminar el Pago seleccionado?", "Confirmar", 2);
+            if (confirmacion == 0) {
+                int filaSeleccionada = tablalistado.getSelectedRow();
+                int idPago = Integer.parseInt(tablalistado.getValueAt(filaSeleccionada, 0).toString());; // Obtener el ID de la fila seleccionada
+                Pago func = new Pago();
+                func.setIdPago(idPago);
+                func.eliminar(func);
+                mostrar("");
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecciona una fila para eliminar el Pago.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }                                           
+
+    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+        this.dispose();
+    }                                        
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(frmPagosCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(frmPagosCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(frmPagosCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(frmPagosCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmPagosCliente().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JLabel Fondo1;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btneliminar;
+    private javax.swing.JButton btnsalir;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tablalistado;
+    private javax.swing.JTextField txtBuscar;
+    // End of variables declaration                   
+}
+
+//JFRAME RESERVA
+
+package hotelcali;
+
+import java.sql.Date;
+import java.util.Calendar;
+import Datos.Habitacion;
+import Datos.Reserva;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+public class frmReserva extends javax.swing.JFrame {
+
+    private String ac = "guardar";
+
+    public frmReserva() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        inHabilitar();
+        mostrar("");
+
+    }
+
+    void mostrar(String buscar) {
+        try {
+            DefaultTableModel modelo;
+            Reserva func = new Reserva();
+            modelo = func.mostrar(buscar);
+
+            tablalistado.setModel(modelo);
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }
+    }
+
+    void habilitar() {
+
+        jDFecha.setEnabled(true);
+        jDFechaIngreso.setEnabled(true);
+        jDFechaSalida.setEnabled(true);
+
+        txtPrecio.setEnabled(true);
+
+        btnAgregar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+
+        txtidcliente.setText("");
+        txtidhabitacion.setText("");
+        txtCliente.setText("");
+
+        txtPrecio.setText("");
+        txtHabitacion.setText("");
+        jDFecha.setDate(null);
+        jDFechaIngreso.setDate(null);
+        jDFechaSalida.setDate(null);
+
+    }
+
+    void inHabilitar() {
+
+        jDFecha.setEnabled(false);
+        jDFechaIngreso.setEnabled(false);
+        jDFechaSalida.setEnabled(false);
+
+        txtPrecio.setEnabled(false);
+
+        btnAgregar.setEnabled(false);
+        btnCancelar.setEnabled(false);
+
+        txtidhabitacion.setText("");
+        txtidcliente.setText("");
+        txtCliente.setText("");
+        txtPrecio.setText("");
+        txtHabitacion.setText("");
+        jDFecha.setDate(null);
+        jDFechaIngreso.setDate(null);
+        jDFechaSalida.setDate(null);
+
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabelRegistroHabitaciones = new javax.swing.JLabel();
+        txtidhabitacion = new javax.swing.JTextField();
+        Habitacion = new javax.swing.JTextField();
+        txtHabitacion = new javax.swing.JTextField();
+        txtidcliente = new javax.swing.JTextField();
+        btnbuscahabitacion1 = new javax.swing.JButton();
+        Cliente = new javax.swing.JTextField();
+        txtCliente = new javax.swing.JTextField();
+        btnbuscaCliente = new javax.swing.JButton();
+        Fecha = new javax.swing.JTextField();
+        jDFecha = new com.toedter.calendar.JDateChooser();
+        FechaIngreso = new javax.swing.JTextField();
+        jDFechaIngreso = new com.toedter.calendar.JDateChooser();
+        FechaSalida = new javax.swing.JTextField();
+        jDFechaSalida = new com.toedter.calendar.JDateChooser();
+        txfPrecio = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
+        btnReserva = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablalistado = new javax.swing.JTable();
+        btnrealizarpagos = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Reservaciones");
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setPreferredSize(new java.awt.Dimension(579, 560));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelRegistroHabitaciones.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabelRegistroHabitaciones.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelRegistroHabitaciones.setText("Reservar Habitación");
+        jPanel3.add(jLabelRegistroHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
+
+        txtidhabitacion.setEditable(false);
+        txtidhabitacion.setBackground(new java.awt.Color(255, 255, 255));
+        txtidhabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidhabitacionActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtidhabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 70, -1));
+
+        Habitacion.setEditable(false);
+        Habitacion.setBackground(new java.awt.Color(104, 79, 56));
+        Habitacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Habitacion.setForeground(new java.awt.Color(255, 255, 255));
+        Habitacion.setText("Habitacion:");
+        Habitacion.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(Habitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 110, -1));
+
+        txtHabitacion.setEditable(false);
+        txtHabitacion.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(txtHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 140, -1));
+
+        txtidcliente.setEditable(false);
+        txtidcliente.setBackground(new java.awt.Color(255, 255, 255));
+        txtidcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidclienteActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtidcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 70, -1));
+
+        btnbuscahabitacion1.setText("...");
+        btnbuscahabitacion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscahabitacion1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnbuscahabitacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, -1, -1));
+
+        Cliente.setEditable(false);
+        Cliente.setBackground(new java.awt.Color(104, 79, 56));
+        Cliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Cliente.setForeground(new java.awt.Color(255, 255, 255));
+        Cliente.setText("Cliente:");
+        Cliente.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 110, -1));
+
+        txtCliente.setEditable(false);
+        txtCliente.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 140, -1));
+
+        btnbuscaCliente.setText("...");
+        btnbuscaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbuscaClienteActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnbuscaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
+
+        Fecha.setEditable(false);
+        Fecha.setBackground(new java.awt.Color(104, 79, 56));
+        Fecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Fecha.setForeground(new java.awt.Color(255, 255, 255));
+        Fecha.setText("Fecha:");
+        Fecha.setToolTipText("");
+        Fecha.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(Fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 110, -1));
+        jPanel3.add(jDFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 130, -1));
+
+        FechaIngreso.setEditable(false);
+        FechaIngreso.setBackground(new java.awt.Color(104, 79, 56));
+        FechaIngreso.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        FechaIngreso.setForeground(new java.awt.Color(255, 255, 255));
+        FechaIngreso.setText("Fecha Ingreso:");
+        FechaIngreso.setToolTipText("");
+        FechaIngreso.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(FechaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 110, -1));
+        jPanel3.add(jDFechaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 130, -1));
+
+        FechaSalida.setEditable(false);
+        FechaSalida.setBackground(new java.awt.Color(104, 79, 56));
+        FechaSalida.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        FechaSalida.setForeground(new java.awt.Color(255, 255, 255));
+        FechaSalida.setText("Fecha Salida:");
+        FechaSalida.setToolTipText("");
+        FechaSalida.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(FechaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 110, -1));
+        jPanel3.add(jDFechaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 130, -1));
+
+        txfPrecio.setEditable(false);
+        txfPrecio.setBackground(new java.awt.Color(104, 79, 56));
+        txfPrecio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txfPrecio.setForeground(new java.awt.Color(255, 255, 255));
+        txfPrecio.setText("Precio:");
+        txfPrecio.setPreferredSize(new java.awt.Dimension(80, 22));
+        jPanel3.add(txfPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 110, -1));
+        jPanel3.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 100, -1));
+
+        btnReserva.setBackground(new java.awt.Color(104, 79, 56));
+        btnReserva.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnReserva.setForeground(new java.awt.Color(255, 255, 255));
+        btnReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/agregar.png"))); // NOI18N
+        btnReserva.setText("Nueva");
+        btnReserva.setBorderPainted(false);
+        btnReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservaActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 458, -1, -1));
+
+        btnAgregar.setBackground(new java.awt.Color(104, 79, 56));
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/disco-flexible.png"))); // NOI18N
+        btnAgregar.setText("Guardar");
+        btnAgregar.setBorderPainted(false);
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 462, -1, -1));
+
+        btnCancelar.setBackground(new java.awt.Color(104, 79, 56));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/archivo.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 462, -1, -1));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/custom-2.png"))); // NOI18N
+        jPanel3.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
+
+        tablalistado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablalistado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablalistadoMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tablalistado);
+
+        btnrealizarpagos.setText("Realizar Pagos");
+        btnrealizarpagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnrealizarpagosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btnrealizarpagos, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnrealizarpagos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void btnReservaActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        habilitar();
+        btnAgregar.setText("Guardar");
+        ac = "guardar";
+
+    }                                          
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        if (txtidhabitacion.getText().isEmpty()) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes Seleccionar una Habitación");
+            txtPrecio.requestFocus();
+            return;
+        }
+        if (txtCliente.getText().isEmpty()) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes Seleccionar un Cliente");
+            txtCliente.requestFocus();
+            return;
+        }
+        if (txtPrecio.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Debes ingresar un precio válido");
+            return;
+        }
+
+        Reserva datos = new Reserva();
+
+        datos.setIdHabitacion(Integer.parseInt(txtidhabitacion.getText()));
+        datos.setIdCliente(Integer.parseInt(txtidcliente.getText()));
+        datos.setPagoTotal(Double.parseDouble(txtPrecio.getText()));
+
+        Calendar cal;
+        int d, m, a;
+        cal = jDFecha.getCalendar();
+        d = cal.get(Calendar.DAY_OF_MONTH);
+        m = cal.get(Calendar.MONTH);
+        a = cal.get(Calendar.YEAR) - 1900;
+        datos.setFechaReserva(new Date(a, m, d));
+
+        cal = jDFechaIngreso.getCalendar();
+        d = cal.get(Calendar.DAY_OF_MONTH);
+        m = cal.get(Calendar.MONTH);
+        a = cal.get(Calendar.YEAR) - 1900;
+        datos.setFechaIngresa(new Date(a, m, d));
+
+        cal = jDFechaSalida.getCalendar();
+        d = cal.get(Calendar.DAY_OF_MONTH);
+        m = cal.get(Calendar.MONTH);
+        a = cal.get(Calendar.YEAR) - 1900;
+        datos.setFechaSalida(new Date(a, m, d));
+
+        if (ac.equals("guardar")) {
+            if (datos.insertar(datos)) {
+                JOptionPane.showMessageDialog(rootPane, "La reserva fue registrada satisfactoriamente");
+                Habitacion habi = new Habitacion();
+                habi.setIdHabitacion(Integer.parseInt(txtidhabitacion.getText()));
+                habi.ocupar(habi);
+                inHabilitar();
+                mostrar("");
+
+            }
+
+        } else if (ac.equals("editar")) {
+            if (datos.editar(datos)) {
+                JOptionPane.showMessageDialog(rootPane, "La reserva fue Editada satisfactoriamente");
+                mostrar("");
+                inHabilitar();
+            }
+        }
+
+    }                                          
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        this.dispose();
+    }                                           
+
+    private void btnbuscaClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        frmListaCliente form = new frmListaCliente();
+        form.toFront();
+        form.setVisible(true);
+
+    }                                               
+
+    private void btnbuscahabitacion1ActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        frmListaHabitacion form = new frmListaHabitacion();
+        form.toFront();
+        form.setVisible(true);
+    }                                                   
+
+    private void btnrealizarpagosActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+
+        int fila = tablalistado.getSelectedRow();
+
+        frmPago.idreserva = tablalistado.getValueAt(fila, 0).toString();
+        frmPago.cliente = tablalistado.getValueAt(fila, 4).toString();
+        frmPago.precio = Double.parseDouble(tablalistado.getValueAt(fila, 8).toString());
+
+        frmPago.idhabitacion = tablalistado.getValueAt(fila, 1).toString();
+        frmPago.habitacion = tablalistado.getValueAt(fila, 2).toString();
+
+        frmPago form = new frmPago();
+
+        form.toFront();
+        form.setVisible(true);
+
+    }                                                
+
+    private void tablalistadoMouseClicked(java.awt.event.MouseEvent evt) {                                          
+        // TODO add your handling code here:
+        btnAgregar.setText("Editar");
+        habilitar();
+
+        ac = "editar";
+
+        int fila = tablalistado.rowAtPoint(evt.getPoint());
+
+        txtidhabitacion.setText(tablalistado.getValueAt(fila, 1).toString());
+        txtHabitacion.setText(tablalistado.getValueAt(fila, 2).toString());
+        txtidcliente.setText(tablalistado.getValueAt(fila, 3).toString());
+        txtCliente.setText(tablalistado.getValueAt(fila, 4).toString());
+        jDFecha.setDate(Date.valueOf(tablalistado.getValueAt(fila, 5).toString()));
+        jDFechaIngreso.setDate(Date.valueOf(tablalistado.getValueAt(fila, 6).toString()));
+        jDFechaSalida.setDate(Date.valueOf(tablalistado.getValueAt(fila, 7).toString()));
+        txtPrecio.setText(tablalistado.getValueAt(fila, 8).toString());
+
+    }                                         
+
+    private void txtidhabitacionActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        // TODO add your handling code here:
+        txtidhabitacion.transferFocus();
+    }                                               
+
+    private void txtidclienteActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // TODO add your handling code here:
+    }                                            
+
+    public static void main(String args[]) {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmReserva().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JTextField Cliente;
+    private javax.swing.JTextField Fecha;
+    private javax.swing.JTextField FechaIngreso;
+    private javax.swing.JTextField FechaSalida;
+    private javax.swing.JTextField Habitacion;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnReserva;
+    private javax.swing.JButton btnbuscaCliente;
+    private javax.swing.JButton btnbuscahabitacion1;
+    private javax.swing.JButton btnrealizarpagos;
+    private javax.swing.JLabel fondo;
+    private com.toedter.calendar.JDateChooser jDFecha;
+    private com.toedter.calendar.JDateChooser jDFechaIngreso;
+    private com.toedter.calendar.JDateChooser jDFechaSalida;
+    private javax.swing.JLabel jLabelRegistroHabitaciones;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tablalistado;
+    private javax.swing.JTextField txfPrecio;
+    public static javax.swing.JTextField txtCliente;
+    public static javax.swing.JTextField txtHabitacion;
+    private javax.swing.JTextField txtPrecio;
+    public static javax.swing.JTextField txtidcliente;
+    public static javax.swing.JTextField txtidhabitacion;
+    // End of variables declaration                   
+}
+
+
+
+
+
